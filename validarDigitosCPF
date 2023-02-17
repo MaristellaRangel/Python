@@ -1,0 +1,31 @@
+def calcularPrimeiroDigito(cpf):
+    soma = 0
+    i = 0
+    
+    for cont in range(10,1,-1):
+        soma += (int(cpf[i]) * cont)
+        i += 1
+    soma = 10 * soma
+    primeiroDigito = soma % 11
+    if primeiroDigito > 9:
+        primeiroDigito = 0
+    return primeiroDigito
+    
+def calcularSegundoDigito(cpf, primeiroD):
+    soma = 0
+    i = 0
+    cpfV = cpf[:9] + str(primeiroD)
+    for cont in range(11,1,-1):
+        soma += (int(cpf[i]) * cont)
+        i += 1
+    soma = 10 * soma
+    segundoDigito = soma % 11
+    if segundoDigito > 9:
+        segundoDigito = 0
+    return segundoDigito
+    
+cpf = input("Digite seu CPF: ")
+cpf = cpf.replace(".","").replace("-","")
+primeiroDigito = calcularPrimeiroDigito(cpf)
+segundoDigito = calcularSegundoDigito(cpf, primeiroDigito)
+print(primeiroDigito,segundoDigito)
