@@ -23,9 +23,15 @@ def calcularSegundoDigito(cpf, primeiroD):
     if segundoDigito > 9:
         segundoDigito = 0
     return segundoDigito
+
+def validarCPF(cpf):
+    cpf = cpf.replace(".","").replace("-","")
+    primeiroDigito = calcularPrimeiroDigito(cpf)
+    segundoDigito = calcularSegundoDigito(cpf, primeiroDigito)
+    if cpf[9] == str(primeiroDigito) and cpf[-1] == str(segundoDigito):
+        print("CPF válido")
+    else:
+        print("CPF inválido")
     
 cpf = input("Digite seu CPF: ")
-cpf = cpf.replace(".","").replace("-","")
-primeiroDigito = calcularPrimeiroDigito(cpf)
-segundoDigito = calcularSegundoDigito(cpf, primeiroDigito)
-print(primeiroDigito,segundoDigito)
+validarCPF(cpf)
