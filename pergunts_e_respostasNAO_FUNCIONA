@@ -1,0 +1,51 @@
+def testarOpc():
+    try:
+        respostaUsuario = int(input("Digite uma opção: "))
+    except ValueError:
+        print("Opção inválida: digite apenas números")
+        testarOpc()
+    else:
+        while respostaUsuario < 0 or respostaUsuario > len(lista_opcoes):
+            print("Opção inválida: escolha um dos números das opções")
+            testarOpc()
+        return respostaUsuario
+
+
+perguntas = [
+    {
+        'Pergunta': 'Quanto é 2 + 2',
+        'Opções': [1, 3, 4, 5],
+        'Resposta': 4
+    },
+    {
+        'Pergunta': 'Quanto é 5 * 5',
+        'Opções': [25, 55, 10, 51],
+        'Resposta': 25
+    },
+    {
+        'Pergunta': 'Quanto é 10/2',
+        'Opções': [4, 5, 2, 1],
+        'Resposta': 5
+    }
+
+]
+pontos = 0
+
+for pe in range(len(perguntas)):
+    pergunta = perguntas[pe]['Pergunta']
+    resposta = perguntas[pe]['Resposta']
+    print(f"Pergunta: {pergunta}")
+    print("Opções: ")
+    lista_opcoes = perguntas[pe]['Opções']
+    for op in range(len(lista_opcoes)):
+        print(f"{op}) {lista_opcoes[op]}")
+
+    respostaUsuario = testarOpc()
+
+    if lista_opcoes[respostaUsuario] == resposta:
+        pontos += 1
+        print("PARABÉNS, VOCÊ ACERTOU!😁")
+    else:
+        print("RESPOSTA ERRADA! 😕")
+
+print(f"Sua pontuação {pontos}/3😉")
