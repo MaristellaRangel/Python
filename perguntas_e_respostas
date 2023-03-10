@@ -3,12 +3,12 @@ def receberOpcao():
         respostaUsuario = int(input("Digite uma opção: "))
     except ValueError:
         print("Opção inválida: digite apenas números")
-        receberOpcao()
+        respostaUsuario = receberOpcao()
     else:
         if respostaUsuario < 0 or respostaUsuario > len(lista_opcoes):
             print("Opção inválida: escolha um dos números das opções")
-            receberOpcao()
-        return respostaUsuario
+            respostaUsuario = receberOpcao()
+    return respostaUsuario
 
 
 perguntas = [
@@ -40,9 +40,9 @@ for pe in range(len(perguntas)):
     for op in range(len(lista_opcoes)):
         print(f"{op}) {lista_opcoes[op]}")
 
-    respostaUsuario = receberOpcao()
+    resp = receberOpcao()
 
-    if lista_opcoes[respostaUsuario] == resposta:
+    if lista_opcoes[resp] == resposta:
         pontos += 1
         print("PARABÉNS, VOCÊ ACERTOU!😁")
     else:
