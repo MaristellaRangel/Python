@@ -39,10 +39,12 @@ for pe in perguntas:
     pergunta = pe['Pergunta']
     resposta = pe['Resposta']
     print(f"Pergunta: {pergunta}")
+    print("")
     print("Opções: ")
     lista_opcoes = pe['Opções']
     for op in range(len(lista_opcoes)):
         print(f"{op}) {lista_opcoes[op]}")
+    print("")
 
     resp = receberOpcao()
 
@@ -51,5 +53,6 @@ for pe in perguntas:
         print("PARABÉNS, VOCÊ ACERTOU!😁")
     else:
         print("RESPOSTA ERRADA! 😕")
+    print("")
 
 print(f"Sua pontuação {pontos}/{len(perguntas)}😉")
