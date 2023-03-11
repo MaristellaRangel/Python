@@ -35,12 +35,12 @@ perguntas = [
 
 ]
 pontos = 0
-for pe in range(len(perguntas)):
-    pergunta = perguntas[pe]['Pergunta']
-    resposta = perguntas[pe]['Resposta']
+for pe in perguntas:
+    pergunta = pe['Pergunta']
+    resposta = pe['Resposta']
     print(f"Pergunta: {pergunta}")
     print("Opções: ")
-    lista_opcoes = perguntas[pe]['Opções']
+    lista_opcoes = pe['Opções']
     for op in range(len(lista_opcoes)):
         print(f"{op}) {lista_opcoes[op]}")
 
