@@ -15,7 +15,7 @@ perguntas = [
     {
         'Pergunta': 'Quem criou a linguagem de programação Python?',
         'Opções': ['James Gosling', 'Rasmus Lerdorf', 'Brendan Eich', 'Guido Van Rossum'],
-        'Resposta': 'James Gosling'
+        'Resposta': 'Guido Van Rossum'
     },
     {
         'Pergunta': 'Indique a alternativa que descreve a saída do seguinte código em Python:\nif 5:\n print("cinco")\nelse:\n print("outro valor")',
