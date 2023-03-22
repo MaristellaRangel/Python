@@ -1,0 +1,26 @@
+def parametros_decorador(nome):
+    def decorador(func):
+        print(f'decorador: {nome}')
+
+        def sua_nova_funcao(*args, **kwargs):
+            res = func(*args, **kwargs)
+            final = f'{res}'
+            return final
+        return sua_nova_funcao
+
+    return decorador
+
+
+@parametros_decorador(nome='segundo')  # decorador segundo
+@parametros_decorador(nome='primeiro')  # decorador primeiro
+def soma(x, y):
+    return x + y
+
+
+s1 = soma(10, 5)
+print(s1)
+
+idade = 15
+nome = 'raphael'
+pessoa = f'{idade} {nome}'
+print(nome)
