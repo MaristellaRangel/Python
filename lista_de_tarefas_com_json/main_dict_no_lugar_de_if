@@ -21,9 +21,6 @@ while True:
     print("Commands: list, undo, redo, exit")
     inp = input("Enter a task or command: ").upper()
     command = commands.get(inp) if commands.get(inp) is not None else commands["ADD"]
-    if len(command()) == 3:
-        command()[0]()
-        command()[1]()
-        command()[2]()
-    else:
-        command()[0]()
+    qt_functions = len(command())
+    for i in range(qt_functions):
+        command()[i]()
