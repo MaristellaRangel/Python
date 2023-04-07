@@ -8,21 +8,18 @@ while True:
     if len(inp) == 0:
         print("Please enter a value")
     else:
-        if isinstance(inp, str):
-            if inp == 'LIST':
-                print("TASKS:")
-                td.list(todo)
-            elif inp == 'UNDO':
-                td.undo(todo, undo)
-                td.list(todo)
-            elif inp == 'REDO':
-                td.redo(todo, undo)
-                td.list(todo)
-            elif inp == 'EXIT':
-                break
-            else:
-                td.add_task(inp, todo)
-                td.list(todo)
+        if inp == 'LIST':
+            print("TASKS:")
+            td.list(todo)
+        elif inp == 'UNDO':
+            td.undo(todo, undo)
+            td.list(todo)
+        elif inp == 'REDO':
+            td.redo(todo, undo)
+            td.list(todo)
+        elif inp == 'EXIT':
+            break
         else:
-            print("Please, enter a string")
+            td.add_task(inp, todo)
+            td.list(todo)
         print()
