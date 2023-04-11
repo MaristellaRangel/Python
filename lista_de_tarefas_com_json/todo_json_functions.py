@@ -16,9 +16,9 @@ def get_lists(f):
 
 
 def set_lists(f, undo_list, todo_list):
-    with open(f, 'w', encoding='utf8') as arquivo:
+    with open(f, 'w', encoding='utf8') as file:
         content = {
             "todo" : todo_list,
             "undo" : undo_list
         }
-        json.dump(content, arquivo)
+        json.dump(content, file)
