@@ -4,21 +4,23 @@ import todo_list_functions as td
 import todo_json_functions as tdj
 import sys
 
-lists = tdj.get_lists()
+file = 'to_do.json'
+lists = tdj.get_lists(file)
 todo = lists[0]
 undo = lists[1]
 
 commands = {
     'LIST' : lambda : [lambda : td.list(todo)],
-    'UNDO' : lambda : [ lambda : td.undo(todo, undo),lambda : tdj.set_lists(undo, todo), lambda : td.list(todo)],
-    'REDO':  lambda: [lambda : td.redo(todo, undo), lambda : tdj.set_lists(undo, todo), lambda : td.list(todo)],
+    'UNDO' : lambda : [ lambda : td.undo(todo, undo),lambda : tdj.set_lists(file, undo, todo), lambda : td.list(todo)],
+    'REDO':  lambda: [lambda : td.redo(todo, undo), lambda : tdj.set_lists(file, undo, todo), lambda : td.list(todo)],
     'EXIT' : lambda: sys.exit(),
-    'ADD' : lambda: [lambda: td.add_task(inp, todo), lambda : tdj.set_lists(undo, todo), lambda : td.list(todo)]
+    'ADD' : lambda: [lambda: td.add_task(inp, todo), lambda : tdj.set_lists(file, undo, todo), lambda : td.list(todo)],
+    'DELETE': lambda : [lambda : td.delete_task(todo), lambda : tdj.set_lists(file, undo, todo), lambda: td.list(todo)]
 
 }
 
 while True:
-    print("Commands: list, undo, redo, exit")
+    print("Commands: list, undo, redo, delete (cannot be undone), exit")
     inp = input("Enter a task or command: ").upper()
     command = commands.get(inp) if commands.get(inp) is not None else commands["ADD"]
     qt_functions = len(command())
