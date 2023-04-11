@@ -15,6 +15,7 @@ def add_task(task, list):
 
 def delete_task(*args):
     task = get_task_to_delete().upper()
+    task = task.strip()
     for list in args:
         if task in list:
             list.remove(task)
