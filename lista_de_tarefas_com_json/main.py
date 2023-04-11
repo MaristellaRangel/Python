@@ -1,12 +1,13 @@
 import todo_list_functions as td
 import todo_json_functions as tdj
 
-lists = tdj.get_lists()
+file = 'to_do.json'
+lists = tdj.get_lists(file)
 todo = lists[0]
 undo = lists[1]
 
 while True:
-    print("Commands: list, undo, redo, exit")
+    print("Commands: list, undo, redo, delete (cannot be undone), exit")
     inp = input("Enter a task or command: ").upper()
     if len(inp) == 0:
         print("Please enter a value")
@@ -16,16 +17,20 @@ while True:
             td.list(todo)
         elif inp == 'UNDO':
             td.undo(todo, undo)
-            tdj.set_lists(undo, todo)
+            tdj.set_lists(file, undo, todo)
             td.list(todo)
         elif inp == 'REDO':
             td.redo(todo, undo)
-            tdj.set_lists(undo, todo)
+            tdj.set_lists(file, undo, todo)
+            td.list(todo)
+        elif inp == 'DELETE':
+            td.delete_task(todo, undo)
+            tdj.set_lists(file, undo, todo)
             td.list(todo)
         elif inp == 'EXIT':
             break
         else:
             td.add_task(inp, todo)
-            tdj.set_lists(undo, todo)
+            tdj.set_lists(file, undo, todo)
             td.list(todo)
         print()
