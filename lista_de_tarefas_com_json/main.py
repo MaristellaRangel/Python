@@ -14,23 +14,17 @@ while True:
     else:
         if inp == 'LIST':
             print("TASKS:")
-            td.list(todo)
         elif inp == 'UNDO':
             td.undo(todo, undo)
-            tdj.set_lists(file, undo, todo)
-            td.list(todo)
         elif inp == 'REDO':
             td.redo(todo, undo)
-            tdj.set_lists(file, undo, todo)
-            td.list(todo)
         elif inp == 'DELETE':
             td.delete_task(todo, undo)
-            tdj.set_lists(file, undo, todo)
-            td.list(todo)
         elif inp == 'EXIT':
             break
         else:
             td.add_task(inp, todo)
-            tdj.set_lists(file, undo, todo)
-            td.list(todo)
         print()
+        tdj.set_lists(file, undo, todo)
+        td.list(todo)
+
